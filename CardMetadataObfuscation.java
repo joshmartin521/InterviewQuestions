@@ -1,3 +1,5 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -31,17 +33,12 @@ public class CardMetadataObfuscation {
                 result.add(formatInterval(Long.parseLong(lastar[0]), end, lastar[2]));
                 continue;
             }
-            else if(result.size() > 0 && !brand.equals(result.get(result.size() - 1).split(",")[2]) && start > prevEnd+1)
-            {
-                String last = result.remove(result.size()-1);
-                String [] lastar = last.split(",");
-                result.add(formatInterval(Long.parseLong(lastar[0]), start-1, lastar[2]));
-            }
 
             // Handle gap before this interval
             else if (start > prevEnd + 1) {
-                // There's a gap before this interval, extend the previous interval
-                result.add(formatInterval(prevEnd + 1, start - 1, result.get(result.size() - 1).split(",")[2]));
+                String last = result.remove(result.size()-1);
+                String [] lastar = last.split(",");
+                result.add(formatInterval(Long.parseLong(lastar[0]), start-1, lastar[2]));
             }
             
             
